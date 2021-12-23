@@ -4,9 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -19,7 +17,6 @@ public class Customer {
 
     private String name;
 
-    @Column(name = "phone_number")
     private String phoneNumber;
 
     @OneToMany (mappedBy="customer", fetch=FetchType.EAGER)

@@ -1,22 +1,31 @@
 package com.example.autosalon.controller;
-
-import org.springframework.stereotype.Controller;
+import com.example.autosalon.model.Order;
+import com.example.autosalon.service.OrderService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-
+import org.springframework.web.bind.annotation.*;
 import java.util.Date;
+import java.util.List;
 
-@Controller
+@RestController
 public class MainController {
 
+    private OrderService orderService;
 
+    @Autowired
+    public MainController(OrderService orderService) {
+        this.orderService = orderService;
+    }
 
-    @PostMapping("/admin")
-    public @ResponseBody String getRevenue(Model model, @RequestParam("start") Date start, @RequestParam("start") Date end) {
+    @PostMapping("/orders")
+    public List<Order> getRevenue(Model model) {
+        return orderService.listOrders();
+    }
 
-        return "index";
+    @PostMapping("/sum")
+    public int getRevenue(Model model,
+                                  @RequestParam("start") Date start,
+                                  @RequestParam("end") Date end) {
+        return orderService.getOrdersAmountOfPeriod(start, end);
     }
 }
