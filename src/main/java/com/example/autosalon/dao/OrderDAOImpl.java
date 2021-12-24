@@ -1,9 +1,8 @@
 package com.example.autosalon.dao;
-import com.example.autosalon.model.Order;
+import com.example.autosalon.model.Orders;
 import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -13,13 +12,19 @@ public class OrderDAOImpl implements OrderDao {
     EntityManager entityManager;
 
     @Override
-    public List<Order> listOrders() {
-            return entityManager.createQuery("from Order as order left join order.customer as customer " +
-                    "left join order.cars as car ORDER BY order.getDate, customer.getName, order.getAmount").getResultList();
+    public List<Orders> listOrders() {
+    return entityManager.createNativeQuery("SELECT o.instant, " +
+            "car.model, o.quantity, o.amount, c.name, c.phone_number " +
+            "FROM orders o LEFT JOIN customer c ON (o.customer_id = c.id) " +
+            "LEFT JOIN orders_car oc ON (o.id = oc.orders_id) " +
+            "LEFT JOIN car car ON (oc.car_id = car.id) " +
+            "ORDER BY o.instant, c.name, o.amount DESC").getResultList();
     }
 
     @Override
-    public int getOrdersAmountOfPeriod(Date start, Date end) {
-        return entityManager.createNativeQuery("SELECT SUM(amount) FROM orders WHERE date >= start AND date <= end").getFirstResult();
+    public int getOrdersAmountOfPeriod(String ins1, String ins2) {
+        String query = "SELECT SUM(amount) FROM orders WHERE instant >= '" + ins1 + "' AND instant <= '" + ins2 +"'";
+        System.out.println(query);
+        return ((Number) entityManager.createNativeQuery(query).getSingleResult()).intValue();
     }
 }

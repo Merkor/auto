@@ -1,10 +1,11 @@
 package com.example.autosalon.service;
 
 import com.example.autosalon.dao.OrderDao;
-import com.example.autosalon.model.Order;
+import com.example.autosalon.model.Orders;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
 import java.util.Date;
 import java.util.List;
 
@@ -18,12 +19,12 @@ public class OrderService {
         this.orderDao = orderDao;
     }
 
-    public List<Order> listOrders() {
+    public List<Orders> listOrders() {
        return orderDao.listOrders();
     }
 
-    public int getOrdersAmountOfPeriod(Date start, Date end) {
-        return orderDao.getOrdersAmountOfPeriod(start, end);
+    public int getOrdersAmountOfPeriod(String ins1, String ins2) {
+        return orderDao.getOrdersAmountOfPeriod(ins1, ins2);
     }
 
 }

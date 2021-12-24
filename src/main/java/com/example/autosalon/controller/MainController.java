@@ -1,10 +1,9 @@
 package com.example.autosalon.controller;
-import com.example.autosalon.model.Order;
+import com.example.autosalon.model.Orders;
 import com.example.autosalon.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import java.util.Date;
+
 import java.util.List;
 
 @RestController
@@ -17,15 +16,14 @@ public class MainController {
         this.orderService = orderService;
     }
 
-    @PostMapping("/orders")
-    public List<Order> getRevenue(Model model) {
+    @GetMapping("/orders")
+    public List<Orders> getRevenue() {
         return orderService.listOrders();
     }
 
     @PostMapping("/sum")
-    public int getRevenue(Model model,
-                                  @RequestParam("start") Date start,
-                                  @RequestParam("end") Date end) {
+    public int getRevenue(@RequestParam("start") String start,
+                          @RequestParam("end") String end) {
         return orderService.getOrdersAmountOfPeriod(start, end);
     }
 }

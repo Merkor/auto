@@ -1,13 +1,12 @@
 package com.example.autosalon.dao;
-import com.example.autosalon.model.Order;
+import com.example.autosalon.model.Orders;
 
-import java.util.Date;
 import java.util.List;
 
 public interface OrderDao {
 
-    List<Order> listOrders();
+    List<Orders> listOrders();
 
-    int getOrdersAmountOfPeriod(Date start, Date end);
+    int getOrdersAmountOfPeriod(String ins1, String ins2);
 
 }
