@@ -1,12 +1,12 @@
 package com.example.autosalon.model;
-
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.Collection;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @Entity
 public class Customer {
@@ -18,8 +18,5 @@ public class Customer {
     private String name;
 
     private String phoneNumber;
-
-    @OneToMany (mappedBy="customer", fetch=FetchType.EAGER)
-    private Collection<Order> orders;
 
 }
