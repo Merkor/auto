@@ -1,12 +1,10 @@
 package com.example.autosalon.service;
 
 import com.example.autosalon.dao.OrderDao;
-import com.example.autosalon.model.Orders;
+import com.example.autosalon.model.OrdersEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.Instant;
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -19,7 +17,7 @@ public class OrderService {
         this.orderDao = orderDao;
     }
 
-    public List<Orders> listOrders() {
+    public List<OrdersEntity> listOrders() {
        return orderDao.listOrders();
     }
 

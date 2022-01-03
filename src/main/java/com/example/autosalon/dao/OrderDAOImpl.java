@@ -1,5 +1,5 @@
 package com.example.autosalon.dao;
-import com.example.autosalon.model.Orders;
+import com.example.autosalon.model.OrdersEntity;
 import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -12,7 +12,7 @@ public class OrderDAOImpl implements OrderDao {
     EntityManager entityManager;
 
     @Override
-    public List<Orders> listOrders() {
+    public List<OrdersEntity> listOrders() {
     return entityManager.createNativeQuery("SELECT o.instant, " +
             "car.model, o.quantity, o.amount, c.name, c.phone_number " +
             "FROM orders o LEFT JOIN customer c ON (o.customer_id = c.id) " +
