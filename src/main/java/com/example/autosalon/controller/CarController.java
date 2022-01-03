@@ -47,7 +47,7 @@ public class CarController {
     public ResponseEntity<CarDTO> addCar(@RequestParam String model,
                                          @RequestParam BigDecimal price) {
         if (carRepository.existsByModel(model)) {
-            throw new BadRequestException(String.format("This car model - \"%s\" already exist", model));
+            throw new BadRequestException(String.format("Модель \"%s\" уже существует", model));
         }
 
         CarEntity carEntity = carRepository.saveAndFlush(
@@ -59,7 +59,7 @@ public class CarController {
 
     @Operation(
             summary = "Список всех моделей",
-            description = "Отдает свписок всех моделей автомобиля"
+            description = "Отдает список всех моделей автомобилей"
     )
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Список моделей"),

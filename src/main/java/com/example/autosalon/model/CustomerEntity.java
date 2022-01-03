@@ -22,4 +22,11 @@ public class CustomerEntity {
 
     @NotNull
     String phoneNumber;
+
+    public static CustomerEntity makeDefault(String name, String phoneNumber) {
+        return builder()
+                .name(name)
+                .phoneNumber(phoneNumber)
+                .build();
+    }
 }
