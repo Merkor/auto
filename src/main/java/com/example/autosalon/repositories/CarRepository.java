@@ -17,5 +17,4 @@ public interface CarRepository extends JpaRepository<CarEntity, Long> {
 
     @Query("SELECT c FROM CarEntity c WHERE :isFiltered = FALSE OR LOWER(c.model) LIKE LOWER(CONCAT('%',:filter,'%'))")
     List<CarEntity> findAllByFilter(boolean isFiltered, String filter);
-
 }

@@ -11,13 +11,11 @@ VALUES (-1, 'Иванов Сергей', '+79107891122'),
 INSERT INTO orders_entity (id, amount, instant, customer_entity_id, quantity) VALUES (-1, 1000000, '20211001', -1, 1);
 INSERT INTO orders_entity_car_entity (orders_entity_id, car_entity_id) VALUES (-1, -1);
 
-INSERT INTO orders_entity (id, amount, instant, customer_entity_id, quantity) VALUES (-2, 4000000, '20211002', -2, 2);
+INSERT INTO orders_entity (id, amount, instant, customer_entity_id, quantity) VALUES (-2, 5000000, '20211002', -3, 2);
 INSERT INTO orders_entity_car_entity (orders_entity_id, car_entity_id) VALUES (-2, -2);
+INSERT INTO orders_entity_car_entity (orders_entity_id, car_entity_id) VALUES (-2, -3);
 
-INSERT INTO orders_entity (id, amount, instant, customer_entity_id, quantity) VALUES (-6, 2000000, '20211002', -2, 1);
-INSERT INTO orders_entity_car_entity (orders_entity_id, car_entity_id) VALUES (-6, -1);
-
-INSERT INTO orders_entity (id, amount, instant, customer_entity_id, quantity) VALUES (-3, 3000000, '20211002', -3, 1);
+INSERT INTO orders_entity (id, amount, instant, customer_entity_id, quantity) VALUES (-3, 3000000, '20211002', -2, 1);
 INSERT INTO orders_entity_car_entity (orders_entity_id, car_entity_id) VALUES (-3, -3);
 
 INSERT INTO orders_entity (id, amount, instant, customer_entity_id, quantity) VALUES (-4, 1000000, '20211003', -2, 1);
@@ -25,3 +23,9 @@ INSERT INTO orders_entity_car_entity (orders_entity_id, car_entity_id) VALUES (-
 
 INSERT INTO orders_entity (id, amount, instant, customer_entity_id, quantity) VALUES (-5, 1000000, '20211004', -3, 1);
 INSERT INTO orders_entity_car_entity (orders_entity_id, car_entity_id) VALUES (-5, -1);
+
+INSERT INTO orders_entity (id, amount, instant, customer_entity_id, quantity) VALUES (-6, 2000000, '20211004', -3, 1);
+INSERT INTO orders_entity_car_entity (orders_entity_id, car_entity_id) VALUES (-6, -2);
+
+INSERT INTO orders_entity (id, amount, instant, customer_entity_id, quantity) VALUES (-7, 1000000, '20211005', -3, 1);
+INSERT INTO orders_entity_car_entity (orders_entity_id, car_entity_id) VALUES (-7, -1);

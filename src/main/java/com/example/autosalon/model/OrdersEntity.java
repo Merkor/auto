@@ -6,7 +6,7 @@ import lombok.experimental.FieldDefaults;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
-import java.time.Instant;
+import java.time.LocalDate;
 import java.util.List;
 
 @Data
@@ -22,7 +22,7 @@ public class OrdersEntity {
     Long id;
 
     @NotNull
-    Instant instant;
+    LocalDate instant;
 
     @NotNull
     BigDecimal amount;
@@ -37,4 +37,15 @@ public class OrdersEntity {
     @NotNull
     @ManyToOne
     CustomerEntity customerEntity;
+
+    public static OrdersEntity makeDefault(List<CarEntity> carEntities, CustomerEntity customerEntity) {
+
+        return OrdersEntity.builder()
+                .instant(LocalDate.now())
+                .amount(carEntities.stream().map(car -> car.getPrice()).reduce(BigDecimal.ZERO, BigDecimal::add))
+                .quantity(carEntities.stream().count())
+                .carEntity(carEntities)
+                .customerEntity(customerEntity)
+                .build();
+    }
 }

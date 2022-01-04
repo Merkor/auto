@@ -89,5 +89,4 @@ public class CarController {
         }
         return ResponseEntity.ok(AckDTO.makeDefault(true));
     }
-
 }

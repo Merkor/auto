@@ -7,6 +7,5 @@ import javax.validation.constraints.NotNull;
 
 @Repository
 public interface CustomerRepository extends JpaRepository<CustomerEntity, Long> {
-
     Boolean existsByPhoneNumber(@NotNull String phoneNumber);
 }
